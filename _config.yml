@@ -6,14 +6,8 @@ baseurl: ""
 url: "https://aleatthayter.github.io"
 github_username: aleatthayter
 
-avatar: /assets/profile.jpeg
-
-# Hyde theme settings
-remote_theme: poole/hyde@v4.1.1
-
-# Sidebar link colour (options: theme-base-08 through theme-base-0f)
-hyde_theme: theme-base-08
+# Build settings
+theme: minima
 
 plugins:
   - jekyll-feed
-  - jekyll-remote-theme
