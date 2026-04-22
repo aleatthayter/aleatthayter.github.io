@@ -4,23 +4,155 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/custom.css' | relative_url }}">
+  <style>
+    /* Reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Font */
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 13px;
+      background: #fff;
+      color: #333;
+    }
+
+    h1 { font-size: 1.8em; margin-bottom: 10px; }
+    h2 { font-size: 1.4em; margin-bottom: 6px; }
+    h3 { font-size: 1.2em; }
+
+    /* Layout */
+    .site-container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      min-width: 240px;
+      background: #f0f0f0;
+      padding: 25px 18px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+      border-right: 1px solid #ddd;
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-header img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-header .name {
+      font-size: 1em;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .sidebar-desc {
+      font-style: italic;
+      font-size: 0.85em;
+      color: #666;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .sidebar a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .linkedin-link {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 0.9em;
+    }
+
+    .sidebar h4 {
+      font-size: 0.8em;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .sidebar .post-links a {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.85em;
+      color: #444;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 240px;
+      padding: 40px 50px;
+      flex: 1;
+      max-width: 800px;
+    }
+
+    .post-entry {
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .post-entry h2 a {
+      color: #222;
+      text-decoration: none;
+    }
+
+    .post-entry h2 a:hover {
+      text-decoration: underline;
+    }
+
+    .post-date {
+      color: #999;
+      font-size: 0.82em;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .post-excerpt {
+      line-height: 1.6;
+      color: #444;
+    }
+  </style>
 </head>
 <body>
   <div class="site-container">
 
     <!-- SIDEBAR -->
     <div class="sidebar">
-      <img class="avatar" src="{{ '/assets/profile.jpeg' | relative_url }}" alt="Profile picture">
-      <p class="sidebar-name">{{ site.title }}</p>
+      <div class="sidebar-header">
+        <img src="{{ '/assets/profile.jpeg' | relative_url }}" alt="Profile photo">
+        <span class="name">{{ site.title }}</span>
+      </div>
+
       <p class="sidebar-desc">{{ site.description }}</p>
 
       <a class="linkedin-link" href="https://www.linkedin.com/in/andrew-leatt-hayter-b36023b2/" target="_blank">
         🔗 LinkedIn
       </a>
 
-      <div class="jump-to">
-        <h4>Jump to</h4>
+      <h4>Previous Posts</h4>
+      <div class="post-links">
         {% for post in site.posts %}
           <a href="#{{ post.title | slugify }}">{{ post.title }}</a>
         {% endfor %}
@@ -33,7 +165,7 @@
         <div class="post-entry" id="{{ post.title | slugify }}">
           <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
           <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
-          <p>{{ post.excerpt }}</p>
+          <p class="post-excerpt">{{ post.excerpt }}</p>
         </div>
       {% endfor %}
     </div>
