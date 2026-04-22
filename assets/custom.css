@@ -1,13 +1,113 @@
-/* Smaller base font size */
-html {
-  font-size: 14px;
+/* Font */
+body {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 9pt;
 }
 
-/* Sidebar profile picture */
-.sidebar-about img {
-  display: block;
-  width: 80px;
-  height: 80px;
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.3em; }
+
+/* Layout: sidebar on left, content on right */
+.site-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  background: #2a2a2a;
+  color: #fff;
+  padding: 30px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar img.avatar {
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  margin: 0 auto 10px auto;
+  object-fit: cover;
+  float: left;
+  margin-right: 12px;
+}
+
+.sidebar .sidebar-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  padding-top: 8px;
+}
+
+.sidebar .sidebar-desc {
+  font-style: italic;
+  font-size: 0.85em;
+  color: #ccc;
+  clear: both;
+  margin-top: 10px;
+}
+
+.sidebar a {
+  color: #aad4f5;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.sidebar .linkedin-link {
+  display: block;
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #aad4f5;
+}
+
+.sidebar .jump-to {
+  margin-top: 25px;
+}
+
+.sidebar .jump-to h4 {
+  color: #fff;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.sidebar .jump-to a {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.85em;
+  color: #ccc;
+}
+
+/* Main content */
+.main-content {
+  margin-left: 280px;
+  padding: 40px;
+  flex: 1;
+}
+
+.post-entry {
+  margin-bottom: 40px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 30px;
+}
+
+.post-entry h2 {
+  margin-bottom: 4px;
+}
+
+.post-date {
+  color: #888;
+  font-size: 0.85em;
+  margin-bottom: 10px;
+  display: block;
 }

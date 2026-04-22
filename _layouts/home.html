@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/custom.css' | relative_url }}">
+</head>
+<body>
+  <div class="site-container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <img class="avatar" src="{{ '/assets/profile.jpeg' | relative_url }}" alt="Profile picture">
+      <p class="sidebar-name">{{ site.title }}</p>
+      <p class="sidebar-desc">{{ site.description }}</p>
+
+      <a class="linkedin-link" href="https://www.linkedin.com/in/andrew-leatt-hayter-b36023b2/" target="_blank">
+        🔗 LinkedIn
+      </a>
+
+      <div class="jump-to">
+        <h4>Jump to</h4>
+        {% for post in site.posts %}
+          <a href="#{{ post.title | slugify }}">{{ post.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+      {% for post in site.posts %}
+        <div class="post-entry" id="{{ post.title | slugify }}">
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+          <p>{{ post.excerpt }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</body>
+</html>
