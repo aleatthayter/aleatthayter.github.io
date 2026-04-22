@@ -1,0 +1,13 @@
+/* Smaller base font size */
+html {
+  font-size: 14px;
+}
+
+/* Sidebar profile picture */
+.sidebar-about img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 10px auto;
+}
