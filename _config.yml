@@ -7,7 +7,7 @@ url: "https://aleatthayter.github.io"
 github_username: aleatthayter
 
 # Your profile picture - add an image file to your repo and put the path here
-avatar: /assets/profile.jpg
+avatar: /assets/profile.jpeg
 
 # Build settings
 remote_theme: poole/hyde
