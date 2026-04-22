@@ -6,10 +6,14 @@ baseurl: ""
 url: "https://aleatthayter.github.io"
 github_username: aleatthayter
 
-# Your profile picture - add an image file to your repo and put the path here
 avatar: /assets/profile.jpeg
 
-# Build settings
+# Hyde theme settings
 remote_theme: poole/hyde
+
+# Sidebar link colour (options: theme-base-08 through theme-base-0f)
+hyde_theme: theme-base-08
+
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
