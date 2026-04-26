@@ -24,37 +24,40 @@ The result is that the people making maintenance, procurement and capital decisi
 
 This agent automates the process of identifying and reconciling master data discrepancies across systems. Here is what it does:
 
-- Ingests data from multiple source systems (in this proof of concept: SAP FLOC data, AVEVA engineering metadata, and an engineering drawing register)
+- Ingests data from multiple source systems: SAP FLOC data, AVEVA engineering metadata, a drawing register CSV, PDF engineering drawings, and CAD files
 - Compares each source against the others, tag by tag, and identifies where the data does not match
 - Uses an AI model to reason about each discrepancy and suggest the most likely correct value, along with an explanation of why
 - Generates a remediation report flagged as pending approval, so a human engineer can review every suggested fix before anything is changed
 
 The agent does not write anything back to source systems automatically. Every suggested fix requires a human to review and approve it first.
 
-The agent is built in Python using LangChain as the orchestration layer and Claude (Anthropic) as the underlying model. Pydantic data models define the output schema for each suggested fix, covering the tag, the field in question, the values found across each system, the suggested correction, and the reasoning behind it. Using structured output means every remediation report is consistently formatted and reliable enough to feed into downstream approval workflows without manual cleanup.
+The agent is built in Python using LangChain as the orchestration layer and Claude (Anthropic) as the underlying model. Pydantic data models define the output schema for each suggested fix, covering the tag, the field in question, the values found across each source system, the suggested correction, and the reasoning behind it. Using structured output means every remediation report is consistently formatted and reliable enough to feed into downstream approval workflows without manual cleanup.
+
+Engineering drawings are handled directly. PNG and JPEG images are processed using Claude's vision capability, which extracts equipment tags and descriptions from scanned P&IDs and equipment schedules. PDF drawings are rendered page by page and passed through the same vision pipeline. DXF CAD files are parsed programmatically using ezdxf, reading the block INSERT attributes that engineering CAD libraries use to store equipment tag numbers and descriptions. The result is that the agent can pull tag data from the actual drawing files sitting in a directory alongside the CSV exports, without requiring someone to manually transcribe drawing data into a register first.
 
 Here is a simple view of how the agent works:
 
 <pre>
-+----------------------------------------------------------+
-|                     DATA SOURCES                         |
-|                                                          |
-|   SAP FLOC Data    AVEVA Metadata    Engineering Drawings|
-|        |                |                   |            |
-|        +----------------+-------------------+            |
-|                         |                                |
-|                         v                                |
-|                  COMPARE & FIND CONFLICTS                |
-|                         |                                |
-|                         v                                |
-|                   AI SUGGESTS FIXES                      |
-|                         |                                |
-|                         v                                |
-|                HUMAN REVIEWS AND APPROVES                |
-|                         |                                |
-|                         v                                |
-|              CLEAN, CONSISTENT MASTER DATA               |
-+----------------------------------------------------------+
++------------------------------------------------------------------+
+|                         DATA SOURCES                             |
+|                                                                  |
+|  SAP FLOC  AVEVA   Drawing   PDF Drawings    CAD/DXF Files       |
+|   Data    Metadata Register  (Claude Vision) (ezdxf)             |
+|     |        |        |            |              |              |
+|     +--------+--------+------------+--------------+              |
+|                              |                                   |
+|                              v                                   |
+|                    COMPARE & FIND CONFLICTS                      |
+|                              |                                   |
+|                              v                                   |
+|                      AI SUGGESTS FIXES                           |
+|                              |                                   |
+|                              v                                   |
+|                  HUMAN REVIEWS AND APPROVES                      |
+|                              |                                   |
+|                              v                                   |
+|                 CLEAN, CONSISTENT MASTER DATA                    |
++------------------------------------------------------------------+
 </pre>
 
 ## 💡 Why It Matters
@@ -73,27 +76,31 @@ Better master data is not just a data quality issue. For a mining or energy oper
 
 ### 📋 Before: The Raw Data
 
-Here is what the data looked like across the three source systems before the agent ran. You can see immediately that the same physical equipment is described differently depending on which system you look at.
+Here is what the data looked like across the five source systems before the agent ran. You can see immediately that the same physical equipment is described differently depending on which system you look at, and that some equipment only appears in certain sources.
 
-| Tag | SAP Description | AVEVA Description | Drawing Description |
-|-----|----------------|-------------------|---------------------|
-| PP-001 | Pump Primary Feed | Primary Feed Pump | Primary Feed Pump |
-| MV-042 | Motor Drive Unit | Electric Motor Drive | Motor Drive Unit |
-| HX-103 | Heat Exchanger Main | Main Heat Exchanger | Heat Exchanger Main |
-| PP-002 | Feed Pump Secondary | Secondary Feed Pump | Secondary Feed Pump |
+| Tag | SAP | AVEVA | Drawing Register | PDF Drawing | CAD File |
+|-----|-----|-------|-----------------|-------------|----------|
+| PP-001 | Pump Primary Feed | Primary Feed Pump | Primary Feed Pump | Primary Feedstock Pump | - |
+| MV-042 | Motor Drive Unit | Electric Motor Drive | Motor Drive Unit | Electric Motor Drive | MV Drive Unit |
+| HX-103 | Heat Exchanger Main | Main Heat Exchanger | Heat Exchanger Main | - | - |
+| PP-002 | Feed Pump Secondary | Secondary Feed Pump | Secondary Feed Pump | - | Feed Pump No.2 |
+| CV-011 | - | - | - | Feed Conveyor Drive | Feed Conveyor Drive |
+| TK-005 | - | - | - | Reagent Storage Tank | Reagent Tank |
 
-No single system is wrong per se, but no two systems fully agree either. For a maintenance planner or procurement officer searching across systems, this creates confusion, duplicated effort and risk of error.
+No single system is wrong per se, but no two fully agree. The last two rows are equipment that exists in the drawing files but has never made it into SAP or AVEVA at all. For a maintenance planner or procurement officer searching across systems, this creates confusion, duplicated effort and risk of error.
 
 ### ✅ Agent Output
 
 Running the agent against this data produced a remediation report with a suggested fix for each discrepancy. Here is what the agent recommended:
 
-| Tag | SAP Value | AVEVA Value | Suggested Fix | Reasoning |
-|-----|-----------|-------------|---------------|-----------|
-| PP-001 | Pump Primary Feed | Primary Feed Pump | Primary Feed Pump | Follows standard naming convention, consistent with engineering documentation standards |
-| MV-042 | Motor Drive Unit | Electric Motor Drive | Electric Motor Drive | More specific and descriptive, clearly identifying the equipment type and function |
-| HX-103 | Heat Exchanger Main | Main Heat Exchanger | Heat Exchanger Main | Equipment type should lead the description for consistency with asset register standards |
-| PP-002 | Feed Pump Secondary | Secondary Feed Pump | Secondary Feed Pump | Follows standard naming convention and is consistent with PP-001 naming pattern |
+| Tag | Suggested Fix | Reasoning |
+|-----|---------------|-----------|
+| PP-001 | Primary Feed Pump | Majority of sources agree on this form. "Primary Feedstock Pump" from the PDF drawing is a variant, but the shorter form is consistent with asset register convention |
+| MV-042 | Electric Motor Drive | Three of four populated sources use a descriptive form. "MV Drive Unit" from the CAD file is an abbreviation that would not be meaningful without context |
+| HX-103 | Heat Exchanger Main | Equipment type leads the description, consistent with asset register standards across the site |
+| PP-002 | Secondary Feed Pump | Consistent with PP-001 naming pattern. "Feed Pump No.2" from the CAD file uses a numbering convention not used elsewhere in the register |
+| CV-011 | Feed Conveyor Drive | Exists only in drawing sources. Flagged for addition to SAP and AVEVA with this description |
+| TK-005 | Reagent Storage Tank | Exists only in drawing sources. The PDF form is preferred over the CAD abbreviation |
 
 Each row is flagged as pending approval in the report and exported to Excel. An engineer reviews each suggestion and either approves it or overrides it with their own judgement before anything is updated in a source system.
 
