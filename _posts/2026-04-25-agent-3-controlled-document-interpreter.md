@@ -25,7 +25,7 @@ This agent ingests a set of approved controlled documents and answers plain-lang
 
 The agent does not guess, infer, or draw on general knowledge. If the information is not in the loaded documents, it says so and directs the worker to their supervisor or document controller. That refusal behaviour is intentional and important. An agent that improvises answers to safety-critical questions is more dangerous than one that admits the limits of what it knows.
 
-The agent is built in Python using LangChain as the orchestration layer, Claude (Anthropic) as the underlying model, and ChromaDB as the local vector store for document retrieval. Pydantic models enforce the output schema for the evaluation pipeline, ensuring every result is consistently structured and comparable across runs.
+The agent is built in Python using LangChain as the orchestration layer, Claude (Anthropic) as the underlying model, and ChromaDB as the local vector store for document retrieval. Pydantic models enforce the output schema for the evaluation pipeline, ensuring every result is consistently structured and comparable across runs. The document search is also exposed as an MCP (Model Context Protocol) server, which means any MCP-compatible client including Claude Desktop can query the controlled documents directly without going through the command line. MCP is a standardised protocol for connecting AI models to external data sources, and exposing the document index this way means it can be consumed as a tool by other agents or systems without any custom integration work.
 
 Here is a simple view of how the agent works:
 
@@ -71,6 +71,7 @@ Getting controlled document access right has direct safety and compliance conseq
 - Consistent answers across the workforce: A new starter and a twenty-year veteran asking the same question will receive the same answer, drawn from the same version of the same document. The quality of safety knowledge does not depend on who you happen to ask.
 - Measurable reliability: The evaluation suite provides a quantitative view of how well the agent is performing before it is trusted in the field. Faithfulness and relevance scores can be tracked over time as documents are updated or the document set expands.
 - Document version control: The agent only answers from the documents it has been given. Keeping those documents current is the same governance challenge as keeping a document management system current, but the answer returned is always traceable to a specific version.
+- Composable integration: Exposing the document search through MCP means the controlled document knowledge becomes a standardised integration point. A planning tool, a permit management system, or another agent can query the same documents through a consistent interface without bespoke integration work for each connection.
 
 ## 🔬 The Agent in Action
 
