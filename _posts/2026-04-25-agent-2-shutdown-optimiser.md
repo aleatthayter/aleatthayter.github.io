@@ -27,6 +27,14 @@ This agent takes a set of SAP work orders and produces an optimised shutdown wor
 
 The agent does not make the final scheduling decision. The output is a recommended plan that a planner reviews before committing to execution.
 
+### 🛠️ Under the Hood
+
+The agent is built in Python using [LangChain](https://python.langchain.com) as the orchestration layer, with Claude (Anthropic) as the underlying model. The most important technical decision in the current version is the use of Pydantic data models to enforce the output schema.
+
+Rather than asking the model to "return JSON" and hoping the format is consistent, the agent defines an explicit contract for what the output must look like — every field, every type. LangChain's `with_structured_output()` enforces this contract at runtime. If a field is missing or the wrong type, the call fails rather than silently producing a malformed plan. This matters because the output feeds directly into Excel and ultimately into scheduling tools like Primavera P6 — a plan with a missing start time or a text string where a number is expected causes downstream failures that are harder to debug than the original error.
+
+The practical effect is that the agent's output is reliable enough to process programmatically, not just read by a human. That is a prerequisite for any future integration with live SAP exports or P6 APIs.
+
 Here is a simple view of how the agent works:
 
 <pre>
