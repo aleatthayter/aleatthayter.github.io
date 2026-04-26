@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Agent 2: Shutdown Optimiser"
-date: 2026-04-24
+date: 2026-04-25
 ---
 
 *View the project on GitHub: [shutdown-optimiser](https://github.com/aleatthayter/shutdown-optimiser)*
