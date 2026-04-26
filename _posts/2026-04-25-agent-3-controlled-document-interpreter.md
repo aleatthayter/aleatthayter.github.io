@@ -8,9 +8,9 @@ date: 2026-04-25
 
 ## ⚠️ The Challenge
 
-Mining and energy operations run on controlled documents. Isolation procedures, confined space entry requirements, hot work permit rules, environmental licence conditions — these documents define how work is done safely and within regulatory requirements. Sites can carry hundreds of them, each with its own version history, approval chain, and review date.
+Mining and energy operations run on controlled documents. Isolation procedures, confined space entry requirements, hot work permit rules, environmental licence conditions. These documents define how work is done safely and within regulatory requirements. Sites can carry hundreds of them, each with its own version history, approval chain, and review date.
 
-The problem is access. Not physical access — most sites have these documents stored somewhere — but practical access. A field worker preparing to enter a confined space needs to know exactly what the permit requirements are and what atmospheric conditions are acceptable before entry. A supervisor issuing a hot work permit needs to know whether the work falls within a confined space and what that triggers. An environment officer needs to know what the discharge turbidity limit is under the site licence. In practice, finding the right answer in the right document, in the right version, quickly enough to be useful, is harder than it should be.
+The problem is access. Not physical access, because most sites have these documents stored somewhere. The problem is practical access. A field worker preparing to enter a confined space needs to know exactly what the permit requirements are and what atmospheric conditions are acceptable before entry. A supervisor issuing a hot work permit needs to know whether the work falls within a confined space and what that triggers. An environment officer needs to know what the discharge turbidity limit is under the site licence. In practice, finding the right answer in the right document, in the right version, quickly enough to be useful, is harder than it should be.
 
 The consequences of getting it wrong range from regulatory non-compliance to serious injury. When workers cannot find answers easily, they rely on memory, ask colleagues, or make reasonable assumptions. Sometimes those assumptions are wrong.
 
@@ -23,7 +23,7 @@ This agent ingests a set of approved controlled documents and answers plain-lang
 - Passes those sections to Claude with a strict instruction: answer only from what is in the documents, cite the source and section, and refuse to answer if the information is not covered
 - Returns a plain-language answer with a clear citation so the worker can verify it in the source document
 
-The agent does not guess, infer, or draw on general knowledge. If the information is not in the loaded documents, it says so and directs the worker to their supervisor or document controller. That refusal behaviour is intentional and important — an agent that improvises answers to safety-critical questions is more dangerous than one that admits the limits of what it knows.
+The agent does not guess, infer, or draw on general knowledge. If the information is not in the loaded documents, it says so and directs the worker to their supervisor or document controller. That refusal behaviour is intentional and important. An agent that improvises answers to safety-critical questions is more dangerous than one that admits the limits of what it knows.
 
 The agent is built in Python using LangChain as the orchestration layer, Claude (Anthropic) as the underlying model, and ChromaDB as the local vector store for document retrieval. Pydantic models enforce the output schema for the evaluation pipeline, ensuring every result is consistently structured and comparable across runs.
 
