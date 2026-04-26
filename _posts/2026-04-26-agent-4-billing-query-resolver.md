@@ -6,7 +6,7 @@ date: 2026-04-26
 
 *View the project on GitHub: [billing-query-resolver](https://github.com/aleatthayter/billing-query-resolver)*
 
-## ⚠️ The Challenge
+## The Challenge
 
 Energy retailers are high-volume, high-frustration support environments. Customers contact them when something has gone wrong with their bill, when they cannot afford to pay, when they have been disconnected, or when they simply do not understand why they owe what they owe. Call centres are expensive, wait times are long, and most queries are repetitive enough that the same small set of questions accounts for the majority of contacts: what do I owe, why is this higher than last month, what rate am I on, did my payment go through.
 
@@ -14,7 +14,7 @@ At the same time, the energy retail environment is tightly regulated. Customers 
 
 The combination of high query volume, repetitive content, and non-negotiable escalation rules makes this a natural fit for an AI support agent.
 
-## ⚙️ How It Works
+## How It Works
 
 This agent runs as a multi-turn conversation in the terminal, playing the role of a support agent for Volta Energy, a fictional Australian energy retailer. Here is what it does:
 
@@ -54,7 +54,7 @@ Here is a simple view of how the agent works:
 +----------------------------------------------------------+
 </pre>
 
-## 💡 Why It Matters
+## Why It Matters
 
 The value of a well-designed support agent in this context is not just cost reduction. It is about raising the floor on the customer experience:
 
@@ -63,9 +63,9 @@ The value of a well-designed support agent in this context is not just cost redu
 - Context-preserving escalation: When the agent does hand over to a human, it passes a summary of the conversation. The human agent does not ask the customer to start again. This is a small thing that makes an enormous difference to a customer who is already frustrated.
 - Defined boundaries: The agent knows what it can and cannot do. It does not attempt to offer payment extensions beyond its authority, provide legal advice, or handle a formal complaint without human involvement. Knowing the limits of what should be automated is as important as knowing what can be.
 
-## 🔬 The Agent in Action
+## The Agent in Action
 
-### 📋 Conversation 1: Billing enquiry
+### Conversation 1: Billing enquiry
 
 A customer contacts support about an unexpectedly high bill. The agent retrieves the account data and the tariff rates, and provides a grounded answer across multiple turns.
 
@@ -88,7 +88,7 @@ $239.17, with the supply charge adding approximately $27.75 for a
 a moderate spike has a clear impact on the total.
 </pre>
 
-### 📋 Conversation 2: Hardship escalation
+### Conversation 2: Hardship escalation
 
 A customer mentions they are unable to pay. The agent immediately escalates with a context summary rather than attempting to resolve the situation autonomously.
 
@@ -115,4 +115,4 @@ Summary: Customer on account ACC-10042 contacted about a $287.45
 
 The second conversation is as important as the first. The agent does not offer an unauthorised payment extension, does not minimise the situation, and does not leave the customer on hold while it escalates internally. It transfers with context, which is what a well-trained human agent would do.
 
-This is a proof of concept. A production implementation would connect to a live CRM and billing system, operate over a web or app chat interface rather than a terminal, include identity verification before sharing account data, and integrate with the retailer's existing case management and complaint handling workflows. The intent here is to demonstrate that the tool-use pattern, context retention, and rules-based escalation logic all work correctly, and to show what a customer-facing AI agent in a regulated industry needs to get right before it can be trusted.
+*This is a proof of concept. A production implementation would connect to a live CRM and billing system, operate over a web or app chat interface rather than a terminal, include identity verification before sharing account data, and integrate with the retailer's existing case management and complaint handling workflows. The intent here is to demonstrate that the tool-use pattern, context retention, and rules-based escalation logic all work correctly, and to show what a customer-facing AI agent in a regulated industry needs to get right before it can be trusted.*

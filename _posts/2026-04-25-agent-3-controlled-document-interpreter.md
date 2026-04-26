@@ -6,7 +6,7 @@ date: 2026-04-25
 
 *View the project on GitHub: [controlled-document-interpreter](https://github.com/aleatthayter/controlled-document-interpreter)*
 
-## ⚠️ The Challenge
+## The Challenge
 
 Mining and energy operations run on controlled documents. Isolation procedures, confined space entry requirements, hot work permit rules, environmental licence conditions. These documents define how work is done safely and within regulatory requirements. Sites can carry hundreds of them, each with its own version history, approval chain, and review date.
 
@@ -14,7 +14,7 @@ The problem is access. Not physical access, because most sites have these docume
 
 The consequences of getting it wrong range from regulatory non-compliance to serious injury. When workers cannot find answers easily, they rely on memory, ask colleagues, or make reasonable assumptions. Sometimes those assumptions are wrong.
 
-## ⚙️ How It Works
+## How It Works
 
 This agent ingests a set of approved controlled documents and answers plain-language questions drawn strictly from them. Here is what it does:
 
@@ -62,7 +62,7 @@ Every query and response is traced through LangSmith, which logs the full chain:
 
 The evaluation suite runs 12 test cases against the four loaded documents, covering factual questions, safety-critical edge cases, and deliberate out-of-scope questions that should trigger a refusal.
 
-## 💡 Why It Matters
+## Why It Matters
 
 Getting controlled document access right has direct safety and compliance consequences:
 
@@ -73,9 +73,9 @@ Getting controlled document access right has direct safety and compliance conseq
 - Document version control: The agent only answers from the documents it has been given. Keeping those documents current is the same governance challenge as keeping a document management system current, but the answer returned is always traceable to a specific version.
 - Composable integration: Exposing the document search through MCP means the controlled document knowledge becomes a standardised integration point. A planning tool, a permit management system, or another agent can query the same documents through a consistent interface without bespoke integration work for each connection.
 
-## 🔬 The Agent in Action
+## The Agent in Action
 
-### 📋 Before: The Lookup Problem
+### Before: The Lookup Problem
 
 Here is a sample of the kinds of questions that arise during day-to-day work on a mine site, alongside the document a worker would need to locate and read to find the answer.
 
@@ -89,7 +89,7 @@ Here is a sample of the kinds of questions that arise during day-to-day work on 
 
 Each answer exists in a document. The friction is in finding it quickly under operational pressure.
 
-### ✅ Agent Output
+### Agent Output
 
 Here is a sample of how the agent responds to the same questions.
 
@@ -111,7 +111,7 @@ Here is a sample of how the agent responds to the same questions.
 
 The last example is the refusal case. The agent does not attempt to answer a question outside its scope. That behaviour is tested explicitly in the evaluation suite and is as important as getting factual answers right.
 
-### 📊 Evaluation Results
+### Evaluation Results
 
 Running the evaluation suite against 12 test cases produced the following results:
 
@@ -123,4 +123,4 @@ Running the evaluation suite against 12 test cases produced the following result
 
 Faithfulness and relevance are scored from 0.0 to 1.0 by a separate Claude call acting as judge, assessing whether the answer is supported by the retrieved chunks and whether the right chunks were retrieved. LangSmith traces each run end-to-end, making it straightforward to inspect any case where scores fall below expected thresholds.
 
-This is a proof of concept. A production implementation would connect to a live document management system to pull current approved versions automatically, would include access controls so workers can only query documents relevant to their role and site, and would carry a more extensive evaluation suite updated each time new documents are added. The intent here is to demonstrate that this kind of grounded, auditable document access is achievable and to show how evaluation and tracing are built into the approach from the start rather than added afterwards.
+*This is a proof of concept. A production implementation would connect to a live document management system to pull current approved versions automatically, would include access controls so workers can only query documents relevant to their role and site, and would carry a more extensive evaluation suite updated each time new documents are added. The intent here is to demonstrate that this kind of grounded, auditable document access is achievable and to show how evaluation and tracing are built into the approach from the start rather than added afterwards.*

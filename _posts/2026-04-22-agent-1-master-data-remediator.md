@@ -6,7 +6,7 @@ date: 2026-04-22
 
 *View the project on GitHub: [master-data-remediator](https://github.com/aleatthayter/master-data-remediator)*
 
-## ⚠️ The Challenge
+## The Challenge
 
 Mining and energy companies manage large, complex asset bases (processing plants, pipelines, rotating equipment, electrical systems) and that asset data lives across multiple systems simultaneously. The problem is those systems rarely agree with each other.
 
@@ -20,7 +20,7 @@ Some of the most common issues:
 
 The result is that the people making maintenance, procurement and capital decisions are working from data they cannot fully trust.
 
-## ⚙️ How It Works
+## How It Works
 
 This agent automates the process of identifying and reconciling master data discrepancies across systems. Here is what it does:
 
@@ -60,7 +60,7 @@ Here is a simple view of how the agent works:
 +------------------------------------------------------------------+
 </pre>
 
-## 💡 Why It Matters
+## Why It Matters
 
 Better master data is not just a data quality issue. For a mining or energy operator it has direct consequences across the business:
 
@@ -72,9 +72,9 @@ Better master data is not just a data quality issue. For a mining or energy oper
 - Shutdown and turnaround planning: Shutdowns are expensive and time-critical. Work packs built on inaccurate master data lead to delays, rework and cost overruns
 - Digital transformation readiness: Any move toward predictive maintenance, digital twins or advanced analytics depends on having a clean, trusted data foundation. Master data remediation is the prerequisite, not the afterthought
 
-## 🔬 The Agent in Action
+## The Agent in Action
 
-### 📋 Before: The Raw Data
+### Before: The Raw Data
 
 Here is what the data looked like across the five source systems before the agent ran. You can see immediately that the same physical equipment is described differently depending on which system you look at, and that some equipment only appears in certain sources.
 
@@ -89,7 +89,7 @@ Here is what the data looked like across the five source systems before the agen
 
 No single system is wrong per se, but no two fully agree. The last two rows are equipment that exists in the drawing files but has never made it into SAP or AVEVA at all. For a maintenance planner or procurement officer searching across systems, this creates confusion, duplicated effort and risk of error.
 
-### ✅ Agent Output
+### Agent Output
 
 Running the agent against this data produced a remediation report with a suggested fix for each discrepancy. Here is what the agent recommended:
 
@@ -104,4 +104,4 @@ Running the agent against this data produced a remediation report with a suggest
 
 Each row is flagged as pending approval in the report and exported to Excel. An engineer reviews each suggestion and either approves it or overrides it with their own judgement before anything is updated in a source system.
 
-This is a proof of concept. A production implementation would require integration with live systems, role-based approval workflows, audit logging, and change management processes tailored to the operator's environment. The intent here is to demonstrate that this kind of automated reconciliation is achievable, and to show where the value lies.
+*This is a proof of concept. A production implementation would require integration with live systems, role-based approval workflows, audit logging, and change management processes tailored to the operator's environment. The intent here is to demonstrate that this kind of automated reconciliation is achievable, and to show where the value lies.*

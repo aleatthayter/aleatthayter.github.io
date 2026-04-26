@@ -6,7 +6,7 @@ date: 2026-04-25
 
 *View the project on GitHub: [shutdown-optimiser](https://github.com/aleatthayter/shutdown-optimiser)*
 
-## ⚠️ The Challenge
+## The Challenge
 
 Mining operators need their assets running continuously. Every hour a processing plant or conveyor system sits idle is production lost and revenue foregone. Yet planned shutdowns are unavoidable. Equipment degrades, statutory inspections must happen, and preventive maintenance on schedule is far less costly than an unplanned failure mid-production.
 
@@ -14,7 +14,7 @@ The challenge is not whether to shut down, but how to make the most of the time 
 
 The consequences of getting it wrong are significant. A shutdown that overruns by even a few hours can cost a mining operation hundreds of thousands of dollars in lost production. And when field workers receive unclear or incomplete instructions, work slows, rework happens, and the window tightens further.
 
-## ⚙️ How It Works
+## How It Works
 
 This agent takes a set of SAP work orders and produces an optimised shutdown work package ready for scheduling in Primavera P6. Here is what it does:
 
@@ -54,7 +54,7 @@ Here is a simple view of how the agent works:
 +----------------------------------------------------------+
 </pre>
 
-## 💡 Why It Matters
+## Why It Matters
 
 Getting shutdown planning right has direct operational and financial consequences:
 
@@ -64,9 +64,9 @@ Getting shutdown planning right has direct operational and financial consequence
 - More work per window: Grouping tasks that share access requirements means more work orders are completed in the same shutdown window. Every additional task completed reduces the backlog and defers the need for the next shutdown.
 - Consistent planning quality: The quality of a shutdown plan today often depends on the experience of the planner running it. This agent applies consistent logic to every work order, regardless of who is planning the event.
 
-## 🔬 The Agent in Action
+## The Agent in Action
 
-### 📋 Before: The Raw Data
+### Before: The Raw Data
 
 Here is a sample of what the work orders looked like coming out of SAP. Descriptions are abbreviated, there is no sequencing logic, and access requirements are listed independently with no grouping applied.
 
@@ -81,7 +81,7 @@ Here is a sample of what the work orders looked like coming out of SAP. Descript
 
 No priority or access grouping has been applied. A field worker receiving WO-3842 and WO-3846 as separate jobs would erect and dismantle scaffolding on CV-01 twice.
 
-### ✅ Agent Output
+### Agent Output
 
 Running the agent against this data produced an optimised plan. Here is a sample of what it recommended:
 
@@ -96,4 +96,4 @@ Running the agent against this data produced an optimised plan. Here is a sample
 
 The two CV-01 scaffolding tasks are now grouped consecutively, MCC-1 isolation work is batched, and Pump Station A tasks are sequenced so the mechanical crew completes both jobs in one visit. Each description has been rewritten from SAP shorthand into a full field instruction.
 
-This is a proof of concept. A production implementation would connect directly to live SAP work order exports, integrate with P6 scheduling APIs, and incorporate additional constraints such as crew availability, permit lead times, and interdependencies between work orders. The intent here is to demonstrate that this kind of automated optimisation is achievable and to show where the value lies.
+*This is a proof of concept. A production implementation would connect directly to live SAP work order exports, integrate with P6 scheduling APIs, and incorporate additional constraints such as crew availability, permit lead times, and interdependencies between work orders. The intent here is to demonstrate that this kind of automated optimisation is achievable and to show where the value lies.*

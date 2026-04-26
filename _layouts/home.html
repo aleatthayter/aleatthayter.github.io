@@ -4,21 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ site.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Reset */
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Font */
     body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      font-size: 13px;
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 14px;
       background: #fff;
       color: #333;
     }
 
-    h1 { font-size: 1.8em; margin-bottom: 10px; }
-    h2 { font-size: 1.4em; margin-bottom: 6px; }
-    h3 { font-size: 1.2em; }
+    /* Post title — largest element in the hierarchy */
+    .post-entry > h2 {
+      font-size: 2em;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    /* Section headings inside post body (## level) — uppercase label style */
+    .post-body h2 {
+      font-size: 0.72em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: #555;
+      margin-top: 2.8em;
+      margin-bottom: 1em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .post-body h2 .section-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Subsection headings (### level) */
+    .post-body h3 {
+      font-size: 1.05em;
+      font-weight: 600;
+      color: #222;
+      margin-top: 2em;
+      margin-bottom: 0.6em;
+    }
 
     /* Layout */
     .site-container {
@@ -57,7 +93,7 @@
 
     .sidebar-header .name {
       font-size: 1em;
-      font-weight: bold;
+      font-weight: 700;
       color: #222;
     }
 
@@ -107,49 +143,35 @@
       max-width: 800px;
     }
 
-    /* Hamburger button — hidden on desktop */
-    .hamburger {
-      display: none;
-    }
+    /* Hamburger — hidden on desktop */
+    .hamburger { display: none; }
 
-    /* Overlay — hidden by default */
     .overlay {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.45);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.45);
       z-index: 999;
     }
 
-    .overlay.open {
-      display: block;
-    }
+    .overlay.open { display: block; }
 
-    /* Mobile layout */
     @media (max-width: 768px) {
       .sidebar {
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         z-index: 1000;
       }
-
-      .sidebar.open {
-        transform: translateX(0);
-      }
-
+      .sidebar.open { transform: translateX(0); }
       .main-content {
         margin-left: 0;
         padding: 60px 20px 30px;
       }
-
       .hamburger {
         display: block;
         position: fixed;
-        top: 14px;
-        left: 14px;
+        top: 14px; left: 14px;
         z-index: 1001;
         background: #2a2a2a;
         color: #fff;
@@ -168,22 +190,16 @@
       border-bottom: 1px solid #eee;
     }
 
-    .post-entry h2 {
-      color: #222;
-      margin-bottom: 6px;
-    }
-
     .post-date {
       color: #999;
       font-size: 0.82em;
       display: block;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
-    /* Post body */
     .post-body p {
       margin-bottom: 1.8em;
-      line-height: 1.6;
+      line-height: 1.7;
       color: #444;
     }
 
@@ -191,7 +207,8 @@
       display: block;
       margin-top: 1.5em;
       margin-bottom: 0.5em;
-      font-size: 1.1em;
+      font-size: 1.05em;
+      font-weight: 700;
       color: #222;
     }
 
@@ -201,8 +218,8 @@
     }
 
     .post-body ul li {
-      margin-bottom: 0.3em;
-      line-height: 1.5;
+      margin-bottom: 0.4em;
+      line-height: 1.6;
       color: #444;
     }
 
@@ -228,7 +245,7 @@
       padding: 8px 12px;
       text-align: left;
       border: 1px solid #ddd;
-      font-weight: bold;
+      font-weight: 700;
     }
 
     .post-body table td {
@@ -241,6 +258,12 @@
       background: #fafafa;
     }
 
+    /* POC italic paragraphs */
+    .post-body p > em:only-child {
+      font-style: italic;
+      color: #777;
+      font-size: 0.93em;
+    }
   </style>
 </head>
 <body>
@@ -282,10 +305,12 @@
     </div>
 
   </div>
+
   <script>
+    // Hamburger menu
     const hamburger = document.getElementById('hamburger');
-    const sidebar = document.querySelector('.sidebar');
-    const overlay = document.getElementById('overlay');
+    const sidebar   = document.querySelector('.sidebar');
+    const overlay   = document.getElementById('overlay');
 
     hamburger.addEventListener('click', function() {
       sidebar.classList.toggle('open');
@@ -295,6 +320,28 @@
     overlay.addEventListener('click', function() {
       sidebar.classList.remove('open');
       overlay.classList.remove('open');
+    });
+
+    // Section icons: inject dark-grey circle + white SVG icon before each ## heading
+    const SECTION_ICONS = {
+      'The Challenge':
+        '<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="13" cy="13" r="13" fill="#2a2a2a"/><line x1="13" y1="7" x2="13" y2="16" stroke="white" stroke-width="2.2" stroke-linecap="round"/><circle cx="13" cy="20" r="1.5" fill="white"/></svg>',
+      'How It Works':
+        '<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="13" cy="13" r="13" fill="#2a2a2a"/><g transform="translate(5,5) scale(0.667)"><path d="M12.22 2h-.44a2 2 0 00-2 2v.18a2 2 0 01-1 1.73l-.43.25a2 2 0 01-2 0l-.15-.08a2 2 0 00-2.73.73l-.22.38a2 2 0 00.73 2.73l.15.1a2 2 0 011 1.72v.51a2 2 0 01-1 1.74l-.15.09a2 2 0 00-.73 2.73l.22.38a2 2 0 002.73.73l.15-.08a2 2 0 012 0l.43.25a2 2 0 011 1.73V20a2 2 0 002 2h.44a2 2 0 002-2v-.18a2 2 0 011-1.73l.43-.25a2 2 0 012 0l.15.08a2 2 0 002.73-.73l.22-.39a2 2 0 00-.73-2.73l-.15-.08a2 2 0 01-1-1.74v-.5a2 2 0 011-1.74l.15-.09a2 2 0 00.73-2.73l-.22-.38a2 2 0 00-2.73-.73l-.15.08a2 2 0 01-2 0l-.43-.25a2 2 0 01-1-1.73V4a2 2 0 00-2-2z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="2"/></g></svg>',
+      'Why It Matters':
+        '<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="13" cy="13" r="13" fill="#2a2a2a"/><g transform="translate(5,5) scale(0.667)"><path d="M12 19V5M5 12l7-7 7 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>',
+      'The Agent in Action':
+        '<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="13" cy="13" r="13" fill="#2a2a2a"/><g transform="translate(5,5) scale(0.667)"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="white" stroke-width="2" stroke-linecap="round"/></g></svg>',
+    };
+
+    document.querySelectorAll('.post-body h2').forEach(function(h2) {
+      const text = h2.textContent.trim();
+      if (SECTION_ICONS[text]) {
+        var span = document.createElement('span');
+        span.className = 'section-icon';
+        span.innerHTML = SECTION_ICONS[text];
+        h2.insertBefore(span, h2.firstChild);
+      }
     });
   </script>
 </body>
