@@ -31,6 +31,8 @@ This agent automates the process of identifying and reconciling master data disc
 
 The agent does not write anything back to source systems automatically. Every suggested fix requires a human to review and approve it first.
 
+The agent is built in Python using LangChain as the orchestration layer and Claude (Anthropic) as the underlying model. Pydantic data models define the output schema for each suggested fix, covering the tag, the field in question, the values found across each system, the suggested correction, and the reasoning behind it. Using structured output means every remediation report is consistently formatted and reliable enough to feed into downstream approval workflows without manual cleanup.
+
 Here is a simple view of how the agent works:
 
 <pre>
@@ -93,6 +95,6 @@ Running the agent against this data produced a remediation report with a suggest
 | HX-103 | Heat Exchanger Main | Main Heat Exchanger | Heat Exchanger Main | Equipment type should lead the description for consistency with asset register standards |
 | PP-002 | Feed Pump Secondary | Secondary Feed Pump | Secondary Feed Pump | Follows standard naming convention and is consistent with PP-001 naming pattern |
 
-Each row is flagged as pending approval in the report. An engineer reviews each suggestion and either approves it or overrides it with their own judgement before anything is updated in a source system.
+Each row is flagged as pending approval in the report and exported to Excel. An engineer reviews each suggestion and either approves it or overrides it with their own judgement before anything is updated in a source system.
 
 This is a proof of concept. A production implementation would require integration with live systems, role-based approval workflows, audit logging, and change management processes tailored to the operator's environment. The intent here is to demonstrate that this kind of automated reconciliation is achievable, and to show where the value lies.
