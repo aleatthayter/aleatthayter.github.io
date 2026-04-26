@@ -55,33 +55,7 @@ The tariff specialist introduces Australia's National Electricity Market as part
 
 Here is a simple view of how the agent works:
 
-<pre>
-+----------------------------------------------------------+
-|                    CUSTOMER MESSAGE                      |
-|                          |                               |
-|                          v                               |
-|                     ORCHESTRATOR                         |
-|          (structured LLM — extracts state updates        |
-|           and routing decision in one call)              |
-|                          |                               |
-|        +-----------------+-----------------+             |
-|        |           |           |           |             |
-|        v           v           v           v             |
-|   ELIGIBILITY  TECHNICAL    TARIFF    APPLICATION        |
-|   SPECIALIST   SPECIALIST SPECIALIST  SPECIALIST         |
-|                                                          |
-|   account      inverter    plan        collects NMI,     |
-|   lookup,      compliance, rates,      installer,        |
-|   state rules  meter check earnings,   submits app       |
-|                            VPP details                   |
-|        |           |           |           |             |
-|        +-----------+-----------+-----------+             |
-|                          |                               |
-|                          v                               |
-|                    SHARED STATE                          |
-|    eligibility / technical / tariff / application_complete
-+----------------------------------------------------------+
-</pre>
+<img src="/assets/diagrams/agent-6-architecture.svg" alt="Agent 6 architecture diagram" style="width:100%;max-width:760px;display:block;margin:1.5rem auto;">
 
 ## Why It Matters
 

@@ -23,7 +23,7 @@ This agent takes a set of SAP work orders and produces an optimised shutdown wor
 - Sequences work within each group by priority, ensuring the most critical tasks are completed before the window closes
 - Rewrites terse SAP descriptions into clear, specific, actionable instructions that field workers can follow without needing to interpret abbreviations or seek clarification
 - Calculates planned start and end times for each task against the shutdown window, and flags any task at risk of not completing within the available hours
-- Outputs the full optimised plan to Excel, structured for import into P6
+- Outputs the full optimised plan to Excel, structured in a format compatible with P6 scheduling logic and ready for a planner to review before committing to P6
 
 The agent does not make the final scheduling decision. The output is a recommended plan that a planner reviews before committing to execution.
 
@@ -31,28 +31,7 @@ The agent is built in Python, using LangChain as the orchestration layer and Cla
 
 Here is a simple view of how the agent works:
 
-<pre>
-+----------------------------------------------------------+
-|                     DATA SOURCES                         |
-|                                                          |
-|         SAP Work Orders (Priority, Area, Duration)       |
-|                         |                                |
-|                         v                                |
-|               GROUP BY AREA & ACCESS NEEDS               |
-|                         |                                |
-|                         v                                |
-|            SEQUENCE BY PRIORITY WITHIN GROUPS            |
-|                         |                                |
-|                         v                                |
-|            AI REWRITES FIELD INSTRUCTIONS                |
-|                         |                                |
-|                         v                                |
-|         FLAG OVERRUN RISK & ASSIGN START TIMES           |
-|                         |                                |
-|                         v                                |
-|            EXCEL OUTPUT READY FOR P6 IMPORT              |
-+----------------------------------------------------------+
-</pre>
+<img src="/assets/diagrams/agent-2-architecture.svg" alt="Agent 2 architecture diagram" style="width:100%;max-width:760px;display:block;margin:1.5rem auto;">
 
 ## Why It Matters
 

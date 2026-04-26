@@ -10,7 +10,7 @@ date: 2026-04-26
 
 Energy retailers are high-volume, high-frustration support environments. Customers contact them when something has gone wrong with their bill, when they cannot afford to pay, when they have been disconnected, or when they simply do not understand why they owe what they owe. Call centres are expensive, wait times are long, and most queries are repetitive enough that the same small set of questions accounts for the majority of contacts: what do I owe, why is this higher than last month, what rate am I on, did my payment go through.
 
-At the same time, the energy retail environment is tightly regulated. Customers experiencing financial hardship are entitled by law to a formal support program under the National Energy Customer Framework. Disconnections are subject to strict procedural requirements. Complaints must be handled through a defined process. An AI agent operating in this context cannot simply resolve queries autonomously — it needs to know when to hand over to a human, and it needs to do so reliably, not occasionally.
+At the same time, the energy retail environment is tightly regulated. Customers experiencing financial hardship are entitled by law to a formal support program under the National Energy Customer Framework. Disconnections are subject to strict procedural requirements. Complaints must be handled through a defined process. An AI agent operating in this context cannot simply resolve queries autonomously. It needs to know when to hand over to a human, and it needs to do so reliably, not occasionally.
 
 The combination of high query volume, repetitive content, and non-negotiable escalation rules makes this a natural fit for an AI support agent.
 
@@ -27,32 +27,11 @@ The agent does not guess at account data or make up tariff rates. When it needs 
 
 The agent is built in Python using LangChain as the orchestration layer and Claude (Anthropic) as the underlying model. Tool use is the key design pattern here. Rather than embedding account and tariff data in the system prompt, the agent is given four tools it can choose to call: one for account and billing data, one for payment history, one for tariff details, and one for escalation. At each turn, the model decides which tool it needs, calls it, reads the result, and then responds. This is meaningfully different from the pipeline pattern used in the earlier agents, where inputs were processed in a fixed sequence. Here the agent is reasoning about what it needs and acting accordingly, which is what makes it feel like a conversation rather than a lookup.
 
+The agent's persona was designed around a specific constraint: it should not perform empathy it cannot follow through on. An agent that responds to a hardship disclosure with warmth and then attempts to resolve the situation autonomously is more damaging than one that acknowledges, escalates immediately, and tells the customer exactly what happens next. That constraint shaped the three escalation categories (hardship, disconnection disputes, and formal complaints) and the agent's tone more broadly. Outside those categories, the agent is direct and factual rather than warm. The intent is to feel efficient and trustworthy, not to simulate a human support interaction.
+
 Here is a simple view of how the agent works:
 
-<pre>
-+----------------------------------------------------------+
-|                   CUSTOMER MESSAGE                       |
-|                         |                                |
-|                         v                                |
-|              AGENT DECIDES WHICH TOOL TO CALL            |
-|                         |                                |
-|         +---------------+---------------+                |
-|         |               |               |                |
-|         v               v               v                |
-|   Account Summary  Payment History  Tariff Details       |
-|         |               |               |                |
-|         +---------------+---------------+                |
-|                         |                                |
-|                         v                                |
-|           AGENT RESPONDS USING TOOL RESULTS              |
-|                         |                                |
-|         +---------------+---------------+                |
-|         |                               |                |
-|         v                               v                |
-|   CONTINUE CONVERSATION          ESCALATE TO HUMAN       |
-|                                  (with context summary)  |
-+----------------------------------------------------------+
-</pre>
+<img src="/assets/diagrams/agent-4-architecture.svg" alt="Agent 4 architecture diagram" style="width:100%;max-width:760px;display:block;margin:1.5rem auto;">
 
 ## Why It Matters
 

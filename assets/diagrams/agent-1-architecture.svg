@@ -1,0 +1,130 @@
+<svg width="760" height="486" viewBox="0 0 760 486" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#6b7280"/>
+    </marker>
+  </defs>
+  <rect width="760" height="468" fill="white"/>
+
+  <!-- Section label -->
+  <text x="380" y="20" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" font-weight="500" fill="#9ca3af" letter-spacing="1.5">DATA SOURCES</text>
+
+  <!-- SAP FLOC (x=20, w=132, center=86) -->
+  <rect x="20" y="28" width="132" height="84" rx="12" fill="rgba(219,234,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(39,36)">
+    <rect x="-7" y="0" width="14" height="18" rx="2" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
+    <line x1="-4" y1="6" x2="4" y2="6" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="-4" y1="10" x2="4" y2="10" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="-4" y1="14" x2="2" y2="14" stroke="#1a1a1a" stroke-width="1"/>
+  </g>
+  <text x="86" y="78" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">SAP FLOC</text>
+  <text x="86" y="94" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Asset register</text>
+
+  <!-- AVEVA (x=167, w=132, center=233) -->
+  <rect x="167" y="28" width="132" height="84" rx="12" fill="rgba(219,234,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(186,36)">
+    <rect x="-7" y="0" width="14" height="18" rx="2" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
+    <line x1="-4" y1="6" x2="4" y2="6" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="-4" y1="10" x2="4" y2="10" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="-4" y1="14" x2="2" y2="14" stroke="#1a1a1a" stroke-width="1"/>
+  </g>
+  <text x="233" y="78" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">AVEVA</text>
+  <text x="233" y="94" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Engineering data</text>
+
+  <!-- Drawing Register (x=314, w=132, center=380) -->
+  <rect x="314" y="28" width="132" height="84" rx="12" fill="rgba(219,234,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(333,36)">
+    <rect x="-7" y="0" width="14" height="18" rx="2" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
+    <line x1="-4" y1="6" x2="4" y2="6" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="-4" y1="10" x2="4" y2="10" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="-4" y1="14" x2="2" y2="14" stroke="#1a1a1a" stroke-width="1"/>
+  </g>
+  <text x="380" y="71" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Drawing</text>
+  <text x="380" y="85" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Register</text>
+  <text x="380" y="99" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">CSV</text>
+
+  <!-- PDF Drawings (x=461, w=132, center=527) -->
+  <rect x="461" y="28" width="132" height="84" rx="12" fill="rgba(219,234,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(482,36)">
+    <ellipse cx="0" cy="9" rx="9" ry="6" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
+    <circle cx="0" cy="9" r="3" fill="#1a1a1a"/>
+  </g>
+  <text x="527" y="78" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">PDF Drawings</text>
+  <text x="527" y="94" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Claude Vision</text>
+
+  <!-- CAD / DXF (x=608, w=132, center=674) -->
+  <rect x="608" y="28" width="132" height="84" rx="12" fill="rgba(219,234,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(628,36)">
+    <rect x="-8" y="0" width="16" height="16" rx="1" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
+    <line x1="-8" y1="5.3" x2="8" y2="5.3" stroke="#1a1a1a" stroke-width="0.8"/>
+    <line x1="-8" y1="10.6" x2="8" y2="10.6" stroke="#1a1a1a" stroke-width="0.8"/>
+    <line x1="-2.7" y1="0" x2="-2.7" y2="16" stroke="#1a1a1a" stroke-width="0.8"/>
+    <line x1="2.7" y1="0" x2="2.7" y2="16" stroke="#1a1a1a" stroke-width="0.8"/>
+  </g>
+  <text x="674" y="78" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">CAD / DXF</text>
+  <text x="674" y="94" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">ezdxf parser</text>
+
+  <!-- Collector lines -->
+  <line x1="86" y1="112" x2="86" y2="126" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="233" y1="112" x2="233" y2="126" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="380" y1="112" x2="380" y2="126" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="527" y1="112" x2="527" y2="126" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="674" y1="112" x2="674" y2="126" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="86" y1="126" x2="674" y2="126" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="380" y1="126" x2="380" y2="133" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Compare & Find Conflicts -->
+  <rect x="180" y="135" width="400" height="62" rx="12" fill="rgba(237,233,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(196,146)">
+    <circle cx="8" cy="8" r="7" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="13" y1="13" x2="19" y2="19" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="390" y="161" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">Compare &amp; Find Conflicts</text>
+  <text x="390" y="180" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Tag-by-tag comparison across all five sources</text>
+
+  <!-- Arrow -->
+  <line x1="380" y1="197" x2="380" y2="213" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- AI Suggests Fixes -->
+  <rect x="180" y="216" width="400" height="62" rx="12" fill="rgba(237,233,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(193,227)">
+    <polygon points="10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  </g>
+  <text x="390" y="242" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">AI Suggests Fixes</text>
+  <text x="390" y="261" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Pydantic structured output: tag, suggested value, reasoning</text>
+
+  <!-- Arrow -->
+  <line x1="380" y1="278" x2="380" y2="294" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Human Reviews & Approves -->
+  <rect x="180" y="297" width="400" height="62" rx="12" fill="rgba(254,243,199,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(194,307)">
+    <circle cx="10" cy="7" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <path d="M1,26 Q1,18 10,18 Q19,18 19,26" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  <text x="390" y="323" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">Human Reviews &amp; Approves</text>
+  <text x="390" y="342" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Every suggested fix requires human sign-off before any change</text>
+
+  <!-- Arrow -->
+  <line x1="380" y1="359" x2="380" y2="375" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Clean Master Data -->
+  <rect x="180" y="378" width="400" height="62" rx="12" fill="rgba(220,252,231,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(194,388)">
+    <circle cx="10" cy="10" r="9" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <polyline points="4,10 8,14 16,6" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  </g>
+  <text x="390" y="404" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">Clean, Consistent Master Data</text>
+  <text x="390" y="423" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Remediation report exported to Excel, pending approval</text>
+
+  <!-- Legend -->
+  <text x="20" y="471" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600" fill="#6b7280">Key</text>
+  <circle cx="52" cy="467" r="5" fill="rgba(219,234,254,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="62" y="471" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">Input / Data</text>
+  <circle cx="140" cy="467" r="5" fill="rgba(237,233,254,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="150" y="471" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">AI Processing</text>
+  <circle cx="238" cy="467" r="5" fill="rgba(254,243,199,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="248" y="471" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">Human Review</text>
+  <circle cx="338" cy="467" r="5" fill="rgba(220,252,231,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="348" y="471" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">Output</text>
+</svg>

@@ -1,0 +1,120 @@
+<svg width="760" height="506" viewBox="0 0 760 506" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#6b7280"/>
+    </marker>
+  </defs>
+  <rect width="760" height="506" fill="white"/>
+
+  <!-- Customer Message -->
+  <rect x="180" y="12" width="400" height="62" rx="12" fill="rgba(219,234,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(194,23)">
+    <circle cx="10" cy="7" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <path d="M1,26 Q1,18 10,18 Q19,18 19,26" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  <text x="390" y="38" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">Customer Message</text>
+  <text x="390" y="57" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Multi-turn conversation with full context retained</text>
+
+  <!-- Arrow -->
+  <line x1="380" y1="74" x2="380" y2="90" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Agent Decides -->
+  <rect x="180" y="93" width="400" height="62" rx="12" fill="rgba(237,233,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(193,104)">
+    <polygon points="10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  </g>
+  <text x="390" y="119" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">Agent Decides Which Tool to Call</text>
+  <text x="390" y="138" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Reasons about what information it needs, then acts</text>
+
+  <!-- Three-way split to tools -->
+  <line x1="380" y1="155" x2="380" y2="167" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="140" y1="167" x2="620" y2="167" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="140" y1="167" x2="140" y2="181" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="380" y1="167" x2="380" y2="181" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="620" y1="167" x2="620" y2="181" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Tool: Account Summary -->
+  <rect x="25" y="184" width="230" height="62" rx="12" fill="rgba(204,251,241,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(39,195)">
+    <ellipse cx="9" cy="4" rx="9" ry="3.5" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="0" y1="4" x2="0" y2="16" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="18" y1="4" x2="18" y2="16" stroke="#1a1a1a" stroke-width="1.5"/>
+    <ellipse cx="9" cy="16" rx="9" ry="3.5" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  <text x="140" y="210" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Account Summary</text>
+  <text x="140" y="229" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Balance, plan, billing period</text>
+
+  <!-- Tool: Payment History -->
+  <rect x="265" y="184" width="230" height="62" rx="12" fill="rgba(204,251,241,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(279,195)">
+    <ellipse cx="9" cy="4" rx="9" ry="3.5" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="0" y1="4" x2="0" y2="16" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="18" y1="4" x2="18" y2="16" stroke="#1a1a1a" stroke-width="1.5"/>
+    <ellipse cx="9" cy="16" rx="9" ry="3.5" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  <text x="380" y="210" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Payment History</text>
+  <text x="380" y="229" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Recent transactions and overdue status</text>
+
+  <!-- Tool: Tariff Details -->
+  <rect x="505" y="184" width="230" height="62" rx="12" fill="rgba(204,251,241,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(519,195)">
+    <ellipse cx="9" cy="4" rx="9" ry="3.5" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="0" y1="4" x2="0" y2="16" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="18" y1="4" x2="18" y2="16" stroke="#1a1a1a" stroke-width="1.5"/>
+    <ellipse cx="9" cy="16" rx="9" ry="3.5" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  <text x="620" y="210" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Tariff Details</text>
+  <text x="620" y="229" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Rate, usage charges, supply charge</text>
+
+  <!-- Collector back to centre -->
+  <line x1="140" y1="246" x2="140" y2="260" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="380" y1="246" x2="380" y2="260" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="620" y1="246" x2="620" y2="260" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="140" y1="260" x2="620" y2="260" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="380" y1="260" x2="380" y2="274" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Agent Responds -->
+  <rect x="180" y="277" width="400" height="62" rx="12" fill="rgba(237,233,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(193,288)">
+    <polygon points="10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  </g>
+  <text x="390" y="303" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">Agent Responds Using Tool Results</text>
+  <text x="390" y="322" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Grounded answer: no guessing, no fabricated data</text>
+
+  <!-- Two-way split -->
+  <line x1="380" y1="339" x2="380" y2="351" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="190" y1="351" x2="550" y2="351" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="190" y1="351" x2="190" y2="365" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="550" y1="351" x2="550" y2="365" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Continue Conversation -->
+  <rect x="20" y="368" width="340" height="62" rx="12" fill="rgba(220,252,231,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(34,378)">
+    <circle cx="10" cy="10" r="9" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <polyline points="4,10 8,14 16,6" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  </g>
+  <text x="190" y="394" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">Continue Conversation</text>
+  <text x="190" y="413" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Routine billing queries resolved autonomously</text>
+
+  <!-- Escalate to Human -->
+  <rect x="380" y="368" width="340" height="62" rx="12" fill="rgba(254,243,199,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(394,378)">
+    <circle cx="10" cy="7" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <path d="M1,26 Q1,18 10,18 Q19,18 19,26" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  <text x="550" y="394" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">Escalate to Human</text>
+  <text x="550" y="413" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Hardship, disconnection disputes, complaints</text>
+
+  <!-- Legend -->
+  <text x="20" y="461" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600" fill="#6b7280">Key</text>
+  <circle cx="52" cy="457" r="5" fill="rgba(219,234,254,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="62" y="461" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">Input</text>
+  <circle cx="100" cy="457" r="5" fill="rgba(237,233,254,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="110" y="461" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">AI Processing</text>
+  <circle cx="193" cy="457" r="5" fill="rgba(204,251,241,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="203" y="461" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">Tool / Data Lookup</text>
+  <circle cx="316" cy="457" r="5" fill="rgba(220,252,231,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="326" y="461" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">Resolved</text>
+  <circle cx="384" cy="457" r="5" fill="rgba(254,243,199,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="394" y="461" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">Human Escalation</text>
+</svg>

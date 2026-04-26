@@ -29,28 +29,7 @@ The agent is built in Python using LangChain as the orchestration layer, Claude 
 
 Here is a simple view of how the agent works:
 
-<pre>
-+----------------------------------------------------------+
-|                     DATA SOURCES                         |
-|                                                          |
-|     Controlled Documents (Procedures, Permits, SOPs)     |
-|                         |                                |
-|                         v                                |
-|         CHUNK AND INDEX INTO VECTOR STORE                |
-|                         |                                |
-|                         v                                |
-|          WORKER ASKS A PLAIN-LANGUAGE QUESTION           |
-|                         |                                |
-|                         v                                |
-|        RETRIEVE RELEVANT DOCUMENT SECTIONS               |
-|                         |                                |
-|                         v                                |
-|    AI ANSWERS FROM DOCUMENTS ONLY, CITES SOURCE         |
-|                         |                                |
-|                         v                                |
-|         REFUSE IF INFORMATION NOT IN DOCUMENTS           |
-+----------------------------------------------------------+
-</pre>
+<img src="/assets/diagrams/agent-3-architecture.svg" alt="Agent 3 architecture diagram" style="width:100%;max-width:760px;display:block;margin:1.5rem auto;">
 
 ### Evaluation and Tracing
 
@@ -121,6 +100,8 @@ Running the evaluation suite against 12 test cases produced the following result
 | Average faithfulness | 0.96 |
 | Average retrieval relevance | 0.94 |
 
-Faithfulness and relevance are scored from 0.0 to 1.0 by a separate Claude call acting as judge, assessing whether the answer is supported by the retrieved chunks and whether the right chunks were retrieved. LangSmith traces each run end-to-end, making it straightforward to inspect any case where scores fall below expected thresholds.
+Faithfulness and relevance are scored from 0.0 to 1.0 by a separate Claude call acting as judge, assessing whether the answer is supported by the retrieved chunks and whether the right chunks were retrieved. Using the same model family as both respondent and judge is worth noting: it does not invalidate the evaluation, but it means the two are likely correlated in ways that could inflate scores relative to a fully independent judge. LangSmith traces each run end-to-end, making it straightforward to inspect any case where scores fall below expected thresholds.
+
+The 12-case eval set is intentionally small for a proof of concept. At this scale, a single incorrect result moves behaviour accuracy from 100% to 91.7%, so the headline numbers should be read as a baseline rather than a statistical claim. A production deployment would require a substantially larger suite, independently validated, and updated each time the document set changes.
 
 *This is a proof of concept. A production implementation would connect to a live document management system to pull current approved versions automatically, would include access controls so workers can only query documents relevant to their role and site, and would carry a more extensive evaluation suite updated each time new documents are added. The intent here is to demonstrate that this kind of grounded, auditable document access is achievable and to show how evaluation and tracing are built into the approach from the start rather than added afterwards.*

@@ -1,0 +1,124 @@
+<svg width="760" height="468" viewBox="0 0 760 468" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#6b7280"/>
+    </marker>
+  </defs>
+  <rect width="760" height="468" fill="white"/>
+
+  <!-- Customer Message -->
+  <rect x="130" y="12" width="500" height="62" rx="12" fill="rgba(219,234,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(144,23)">
+    <circle cx="10" cy="7" r="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <path d="M1,26 Q1,18 10,18 Q19,18 19,26" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  <text x="380" y="38" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">Customer Message</text>
+  <text x="380" y="57" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Multi-turn conversation: account details, system specs, preferences</text>
+
+  <!-- Arrow -->
+  <line x1="380" y1="74" x2="380" y2="90" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Orchestrator -->
+  <rect x="130" y="93" width="500" height="76" rx="12" fill="rgba(255,237,213,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(146,107)">
+    <circle cx="10" cy="10" r="4" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="10" y1="0" x2="10" y2="6" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="10" y1="14" x2="10" y2="20" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="0" y1="10" x2="6" y2="10" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="14" y1="10" x2="20" y2="10" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="3" y1="3" x2="7" y2="7" stroke="#1a1a1a" stroke-width="1.2"/>
+    <line x1="17" y1="3" x2="13" y2="7" stroke="#1a1a1a" stroke-width="1.2"/>
+    <line x1="3" y1="17" x2="7" y2="13" stroke="#1a1a1a" stroke-width="1.2"/>
+    <line x1="17" y1="17" x2="13" y2="13" stroke="#1a1a1a" stroke-width="1.2"/>
+  </g>
+  <text x="390" y="118" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">Orchestrator</text>
+  <text x="390" y="137" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Structured LLM call: extracts state updates and routing decision in one pass</text>
+  <text x="390" y="155" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Routing is deterministic code, not a model decision</text>
+
+  <!-- Four-way split arrows -->
+  <line x1="380" y1="169" x2="380" y2="181" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="103" y1="181" x2="657" y2="181" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="103" y1="181" x2="103" y2="195" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="288" y1="181" x2="288" y2="195" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="472" y1="181" x2="472" y2="195" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="657" y1="181" x2="657" y2="195" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Eligibility Specialist -->
+  <rect x="18" y="198" width="170" height="110" rx="12" fill="rgba(237,233,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(32,210)">
+    <polygon points="10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  </g>
+  <text x="103" y="226" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Eligibility</text>
+  <text x="103" y="242" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Specialist</text>
+  <line x1="38" y1="255" x2="168" y2="255" stroke="#d1d5db" stroke-width="1"/>
+  <text x="103" y="270" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Account lookup</text>
+  <text x="103" y="285" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">State eligibility rules</text>
+  <text x="103" y="300" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Owner / renter check</text>
+
+  <!-- Technical Specialist -->
+  <rect x="203" y="198" width="170" height="110" rx="12" fill="rgba(237,233,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(217,210)">
+    <polygon points="10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  </g>
+  <text x="288" y="226" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Technical</text>
+  <text x="288" y="242" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Specialist</text>
+  <line x1="223" y1="255" x2="353" y2="255" stroke="#d1d5db" stroke-width="1"/>
+  <text x="288" y="270" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Inverter compliance</text>
+  <text x="288" y="285" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">AS4777 check</text>
+  <text x="288" y="300" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Meter requirements</text>
+
+  <!-- Tariff Specialist -->
+  <rect x="388" y="198" width="170" height="110" rx="12" fill="rgba(237,233,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(402,210)">
+    <polygon points="10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  </g>
+  <text x="473" y="226" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Tariff</text>
+  <text x="473" y="242" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Specialist</text>
+  <line x1="408" y1="255" x2="538" y2="255" stroke="#d1d5db" stroke-width="1"/>
+  <text x="473" y="270" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Plan FiT rate lookup</text>
+  <text x="473" y="285" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Earnings calculator</text>
+  <text x="473" y="300" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">VPP program details</text>
+
+  <!-- Application Specialist -->
+  <rect x="573" y="198" width="170" height="110" rx="12" fill="rgba(237,233,254,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(587,210)">
+    <polygon points="10,0 12,8 20,10 12,12 10,20 8,12 0,10 8,8" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+  </g>
+  <text x="658" y="226" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Application</text>
+  <text x="658" y="242" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#111827">Specialist</text>
+  <line x1="593" y1="255" x2="723" y2="255" stroke="#d1d5db" stroke-width="1"/>
+  <text x="658" y="270" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">NMI + installer</text>
+  <text x="658" y="285" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Y confirmation</text>
+  <text x="658" y="300" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#4b5563">Submits application</text>
+
+  <!-- Collector lines to Shared State -->
+  <line x1="103" y1="308" x2="103" y2="328" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="288" y1="308" x2="288" y2="328" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="472" y1="308" x2="472" y2="328" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="657" y1="308" x2="657" y2="328" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="103" y1="328" x2="657" y2="328" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="380" y1="328" x2="380" y2="342" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Shared State -->
+  <rect x="130" y="345" width="500" height="76" rx="12" fill="rgba(204,251,241,0.7)" stroke="#1a1a1a" stroke-width="1.5"/>
+  <g transform="translate(146,360)">
+    <ellipse cx="9" cy="4" rx="9" ry="3.5" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="0" y1="4" x2="0" y2="16" stroke="#1a1a1a" stroke-width="1.5"/>
+    <line x1="18" y1="4" x2="18" y2="16" stroke="#1a1a1a" stroke-width="1.5"/>
+    <ellipse cx="9" cy="16" rx="9" ry="3.5" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+  </g>
+  <text x="390" y="370" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#111827">Shared State</text>
+  <text x="390" y="389" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">eligibility_status / technical_status / feed_in_rate / application_complete</text>
+  <text x="390" y="408" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="11" fill="#4b5563">Persisted across all turns; no information repeated by the customer</text>
+
+  <!-- Legend -->
+  <text x="20" y="452" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600" fill="#6b7280">Key</text>
+  <circle cx="52" cy="448" r="5" fill="rgba(219,234,254,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="62" y="452" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">Input</text>
+  <circle cx="100" cy="448" r="5" fill="rgba(255,237,213,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="110" y="452" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">Orchestrator</text>
+  <circle cx="192" cy="448" r="5" fill="rgba(237,233,254,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="202" y="452" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">AI Specialist</text>
+  <circle cx="278" cy="448" r="5" fill="rgba(204,251,241,0.7)" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="288" y="452" font-family="system-ui,-apple-system,'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280">Shared State</text>
+</svg>

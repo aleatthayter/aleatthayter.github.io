@@ -26,40 +26,19 @@ The process works as follows:
 - The agent calls Claude with the full list of required conditions alongside the submitted evidence for each one, and uses Pydantic structured output to assess whether each condition is satisfied
 - The approval decision is made deterministically in code, not by the model
 
-That last point is the critical design decision. The model assesses evidence — it reasons about whether "Area inspected at 06:45, no flammable materials within 10m confirmed by Shift Supervisor" is sufficient to satisfy the condition "area cleared of flammable and combustible materials within 10 metres." But the model does not approve the permit. A single line of code does that:
+That last point is the critical design decision. The model assesses evidence: it reasons about whether "Area inspected at 06:45, no flammable materials within 10m confirmed by Shift Supervisor" is sufficient to satisfy the condition "area cleared of flammable and combustible materials within 10 metres." But the model does not approve the permit. A single line of code does that:
 
 ```python
 approved = all(c.satisfied for c in assessment.conditions)
 ```
 
-If any condition is unsatisfied, the permit is blocked. The model cannot override this. No prompt engineering, no edge-case model behaviour, and no optimistic interpretation of ambiguous evidence can cause an incomplete permit to be approved. The guardrail is in the code, not in the instruction.
+If any condition is unsatisfied, the permit is blocked. The model cannot shortcut this logic. It cannot approve a permit by bypassing the approval step, because the approval step is not something it controls. What the model does control is whether each condition is assessed as satisfied or not. That assessment is where its judgement is applied, and where the quality of evidence provided matters. The architectural point is that the approval decision is an honest reflection of the model's per-condition assessments, not something the model can override by taking a different path through the logic.
 
 The agent produces a validation report exported to Excel with a summary decision and a per-condition breakdown showing what evidence was submitted, how it was assessed, and whether it passed or failed.
 
 Here is a simple view of how the agent works:
 
-<pre>
-+----------------------------------------------------------+
-|                   PERMIT SUBMISSION                      |
-|         (type, location, evidence per condition)         |
-|                         |                                |
-|                         v                                |
-|        LLM ASSESSES EACH CONDITION AGAINST EVIDENCE      |
-|           (Pydantic structured output per condition)     |
-|                         |                                |
-|                         v                                |
-|        CODE COMPUTES APPROVAL DECISION                   |
-|        approved = all(conditions satisfied)              |
-|                         |                                |
-|         +---------------+---------------+                |
-|         |                               |                |
-|         v                               v                |
-|      APPROVED                        BLOCKED             |
-|   (all conditions met)       (list of failing conditions)|
-|                                                          |
-|              VALIDATION REPORT TO EXCEL                  |
-+----------------------------------------------------------+
-</pre>
+<img src="/assets/diagrams/agent-5-architecture.svg" alt="Agent 5 architecture diagram" style="width:100%;max-width:760px;display:block;margin:1.5rem auto;">
 
 ## Why It Matters
 
@@ -76,7 +55,7 @@ The financial framing is important here because it makes the case in terms that 
 
 ### Hot work permit: blocked
 
-The first sample permit is a hot work permit for a weld repair in a lube room. Four of the five required conditions have evidence submitted. The fire watch condition — requiring a named person briefed and on duty for the duration of work and 30 minutes after completion — has no evidence submitted.
+The first sample permit is a hot work permit for a weld repair in a lube room. Four of the five required conditions have evidence submitted. The fire watch condition, which requires a named person briefed and on duty for the duration of work and 30 minutes after completion, has no evidence submitted.
 
 <pre>
   HW-2026-0142  |  HOT WORK

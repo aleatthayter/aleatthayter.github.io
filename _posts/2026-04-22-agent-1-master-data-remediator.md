@@ -37,28 +37,7 @@ Engineering drawings are handled directly. PNG and JPEG images are processed usi
 
 Here is a simple view of how the agent works:
 
-<pre>
-+------------------------------------------------------------------+
-|                         DATA SOURCES                             |
-|                                                                  |
-|  SAP FLOC  AVEVA   Drawing   PDF Drawings    CAD/DXF Files       |
-|   Data    Metadata Register  (Claude Vision) (ezdxf)             |
-|     |        |        |            |              |              |
-|     +--------+--------+------------+--------------+              |
-|                              |                                   |
-|                              v                                   |
-|                    COMPARE & FIND CONFLICTS                      |
-|                              |                                   |
-|                              v                                   |
-|                      AI SUGGESTS FIXES                           |
-|                              |                                   |
-|                              v                                   |
-|                  HUMAN REVIEWS AND APPROVES                      |
-|                              |                                   |
-|                              v                                   |
-|                 CLEAN, CONSISTENT MASTER DATA                    |
-+------------------------------------------------------------------+
-</pre>
+<img src="/assets/diagrams/agent-1-architecture.svg" alt="Agent 1 architecture diagram" style="width:100%;max-width:760px;display:block;margin:1.5rem auto;">
 
 ## Why It Matters
 
